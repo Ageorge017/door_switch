@@ -4,15 +4,16 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
-#include <mutex>
+#include "pico/mutex.h"
 
 Logger* Logger::instance = nullptr;
 mutex_t Logger::mutex;
 
 Logger* Logger::getInstance() {
-    std::lock_guard<mutex_t> lock(mutex);
     if (instance == nullptr) {
+        mutex_enter_blocking(&mutex);
         instance = new Logger();
+        mutex_exit(&mutex);
     }
     return instance;
 }

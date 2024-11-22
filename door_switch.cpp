@@ -4,6 +4,10 @@
 
 
 
+int get_door_state() {
+    return 0;
+}
+
 int main()
 {
     printf("Initializing...\n");
@@ -19,10 +23,7 @@ int main()
         } else {
             logger->info({"Door is closed", {{"door_state", "closed"}}});
         }
-        sleep_ms(1000);
+        sleep_ms(3000);
     }
 }
 
-int get_door_state() {
-    return 0;
-}

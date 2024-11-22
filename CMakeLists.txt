@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(door_switch door_switch.cpp )
+add_executable(door_switch door_switch.cpp utils/logger.cpp )
 
 pico_set_program_name(door_switch "door_switch")
 pico_set_program_version(door_switch "0.1")

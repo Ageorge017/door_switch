@@ -29,6 +29,9 @@ void Logger::log(const LoggerProps& props, LogLevel log_type){
         case LogLevel::ERROR:
             log_type_str = "ERROR";
             break;
+        case LogLevel::WARN:
+            log_type_str = "WARN";
+            break;
     }
 
     std::cout << log_type_str << ": " << current_time << " : " << props.message << std::endl;
@@ -42,7 +45,11 @@ void Logger::info(const LoggerProps& props) {
    log(props, LogLevel::INFO);
 }
 
-void Logger::error(const char* message) {
-    printf("ERROR : %s\n", message);
+void Logger::error(const LoggerProps& props) {
+    log(props, LogLevel::ERROR);
+}
+
+void Logger::warn(const LoggerProps& props) {
+    log(props, LogLevel::WARN);
 }
 

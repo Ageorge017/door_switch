@@ -11,7 +11,8 @@ struct LoggerProps {
 
 enum class LogLevel {
     INFO,
-    ERROR
+    ERROR,
+    WARN
 };
 
 class Logger {
@@ -20,7 +21,9 @@ class Logger {
         void log(const LoggerProps& props, LogLevel log_type);
     public:
         void info(const LoggerProps& props);
-        void error(const char* message);
+        void error(const LoggerProps& props);
+        void warn(const LoggerProps& props);
+
 };
 
 #endif

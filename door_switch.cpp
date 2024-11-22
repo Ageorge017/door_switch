@@ -9,13 +9,15 @@ int main()
     printf("Initializing...\n");
     
     stdio_init_all();
+    Logger* logger = Logger::getInstance();
 
     while (true) {
         int door_state = get_door_state();
+
         if (door_state == 1) {
-            printf("Door is open\n");
+            logger->info({"Door is open", {{"door_state", "open"}}});
         } else {
-            printf("Door is closed\n");
+            logger->info({"Door is closed", {{"door_state", "closed"}}});
         }
         sleep_ms(1000);
     }

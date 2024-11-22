@@ -4,8 +4,18 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
-#include <map>
+#include <mutex>
 
+Logger* Logger::instance = nullptr;
+mutex_t Logger::mutex;
+
+Logger* Logger::getInstance() {
+    std::lock_guard<mutex_t> lock(mutex);
+    if (instance == nullptr) {
+        instance = new Logger();
+    }
+    return instance;
+}
 
 std::string Logger::get_datetime() {
     auto now = std::chrono::system_clock::now();
